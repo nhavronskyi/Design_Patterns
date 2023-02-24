@@ -1,7 +1,8 @@
 public class Main {
 
 	public static void main(String[] args) {
-		multiThreaded();
+		//multiThreaded();
+		//synchronizedSingleton();
 	}
 	
 	// single-threaded Singleton
@@ -13,7 +14,7 @@ public class Main {
 		System.out.println(s2.name);
 	}
 	
-	// multi-threaded Singleton
+	// multi-threaded Singleton, fast and save
 	public static void multiThreaded() {
 		Thread tOne = new Thread(new ThreadOne());
 		Thread tTwo = new Thread(new ThreadTwo());
@@ -38,5 +39,28 @@ public class Main {
 		 }
 	 
 	 
-	
+	 // synchronized Singleton, more safe, but slow
+	 public static void synchronizedSingleton() {
+		 SynchronizedSingleton s;
+		 Thread one = new Thread(new SyncThreadOne());
+		 Thread two = new Thread(new SyncThreadTwo());
+		 
+		 one.start();
+		 two.start();
+	 }
+	 static class SyncThreadOne implements Runnable{
+		 	@Override
+			public void run() {
+				SynchronizedSingleton s = SynchronizedSingleton.getInstance("one");
+				System.out.println(s.value);
+			}
+		 }
+		 static class SyncThreadTwo implements Runnable{
+			 	@Override
+				public void run() {
+			 		SynchronizedSingleton s = SynchronizedSingleton.getInstance("two");
+			 		System.out.println(s.value);
+					
+				}
+			 }
 }
