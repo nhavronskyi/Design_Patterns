@@ -8,10 +8,12 @@ import factory_method.factory.TV;
 
 public class Electronic_Store {
 	public static void main(String[] args) {
+		
+		// added elems to storage
 		Seller sellTV = new TV(5);
 		Seller sellLaptop = new Laptop(5);
 		
-		
+		// cycle to check electronic seller
 		for(int i = 0; i < 7; i++) {
 			Product showTV = sellTV.sellProduct();
 			System.out.println(showTV.showInfo());
@@ -19,7 +21,7 @@ public class Electronic_Store {
 			Product showLaptop = sellLaptop.sellProduct();
 			System.out.println(showLaptop.showInfo());	
 			
-			if(showTV.showInfo().equals("Storage is Empty") || showLaptop.showInfo().equals("Storage is Empty"))
+			if(showTV.showInfo().startsWith("Storage is Empty") || showLaptop.showInfo().startsWith("Storage is Empty"))
 				break;
 		}
 	}

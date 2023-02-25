@@ -10,7 +10,7 @@ public class Laptop implements Seller{
 	@Override
 	public Product sellProduct() {
 		if(counterOfProducts == 0)
-			return new EmptyStorage();
+			return new EmptyStorage("Laptop");
 		counterOfProducts--;
 		return new SellLaptop();
 	}

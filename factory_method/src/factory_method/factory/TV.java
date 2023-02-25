@@ -10,7 +10,7 @@ public class TV implements Seller{
 	@Override
 	public Product sellProduct() {
 		if(counterOfProducts == 0)
-			return new EmptyStorage();
+			return new EmptyStorage("TV");
 		counterOfProducts--;
 		return new SellTV();
 	}
